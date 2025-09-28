@@ -1,35 +1,45 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-
+import {Routes, Route} from 'react-router-dom';
+import Navbar from './components/NavBar';
+import HomePage from './components/HomePage';
+import Booking from './components/Booking';
+import ContactUs from './components/booking/ContactUs';
+import Footer from './components/Footer';
+import AboutUs from './components/AboutUs';
+import Services from "./components/Services"; 
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfService from './components/termsofservice';
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="flex flex-col min-h-screen">
+      {/* Navigation Bar */}
+     <div className="bg-brand text-white">
+  <Navbar />
+</div>
+
+
+      {/* Page Content */}
+      <main className="flex-grow">
+        {/* center all routes horizontally with a site container */}
+        <div className="container mx-auto px-4">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/booking" element={<Booking />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/contactus" element={<ContactUs/>} />
+            <Route path="/aboutus" element={<AboutUs/>} />
+            <Route path="/privacypolicy" element={<PrivacyPolicy/>} />
+            <Route path="/termsofservice" element={<TermsOfService/>} />
+          </Routes>
+        </div>
+      </main>
+
+     <Footer></Footer>
+      {/* <FooterSection /> */}
+    </div>
+  );
 }
+
 
 export default App
